@@ -1,3 +1,76 @@
+@tailwind base;
+
+@custom-variant dark (&:is(.dark *));
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+
+    /* Sidebar Light Theme */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.4 96.6% 11.6%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.1 70.6% 45.3%;
+
+    /* Sidebar Dark Theme (Luxury Dark Match) */
+    --sidebar-background: 222 26% 10%; /* Matches #131720 background */
+    --sidebar-foreground: 214 32% 91%;  /* Matches #e2e8f0 foreground */
+    --sidebar-primary: 142 72% 55%;    /* Matches green accent */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 12%;      /* Matches rgba(255,255,255,0.06) */
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 14% 12%;      /* Matches rgba(255,255,255,0.06) */
+    --sidebar-ring: 142 72% 55%;
+  }
+}
+
 /* -------------------------------------------------------------
  * SOTEJ BAZAAR - Organic Luxury Design System
  * ------------------------------------------------------------- */
@@ -12,11 +85,11 @@
   --primary-raw: 142;
   --primary-s: 72%;
   --primary-l: 29%;
-  
+
   --primary: HSL(var(--primary-raw), var(--primary-s), var(--primary-l)); /* Elegant Forest Green */
   --primary-light: HSL(var(--primary-raw), var(--primary-s), 96%);
   --primary-dark: HSL(var(--primary-raw), var(--primary-s), 18%);
-  
+
   --accent-mint: HSL(146, 75%, 48%);
   --accent-gold: HSL(42, 94%, 55%);
   --accent-red: HSL(350, 89%, 60%);
@@ -26,11 +99,11 @@
   --bg-site: HSL(120, 20%, 98.5%);
   --bg-card: HSL(0, 0%, 100%);
   --bg-contrast: HSL(220, 24%, 7%);
-  
+
   --text-main: HSL(220, 20%, 14%);
   --text-muted: HSL(220, 10%, 46%);
   --text-light: HSL(220, 14%, 90%);
-  
+
   --border-light: HSL(140, 20%, 90%);
   --border-focus: var(--accent-mint);
 
@@ -51,6 +124,14 @@
   --max-width: 1280px;
   --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   --transition-snappy: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 /* Base Reset & Core Styles */
@@ -2437,18 +2518,18 @@ img {
     text-align: center;
     gap: 40px;
   }
-  
+
   .hero-content {
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .hero-cta {
     justify-content: center;
   }
-  
+
   .hero-media {
     justify-content: center;
   }
@@ -2456,7 +2537,7 @@ img {
   .shop-main-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .filters-sidebar {
     position: static;
   }
@@ -2602,5 +2683,27 @@ img {
 
 .breadcrumb-link:hover {
   color: var(--primary);
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
