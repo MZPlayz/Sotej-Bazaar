@@ -20,43 +20,31 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <SidebarProvider className="dark" defaultOpen={true}>
-      <div className="admin-shell">
-        <AppSidebar />
-        
-        <SidebarInset className="admin-main-inset">
-          {/* Top Bar */}
-          <header className="admin-topbar">
-            <SidebarTrigger className="admin-trigger-btn" />
-            <div className="admin-topbar-breadcrumb">
-              <span className="admin-topbar-brand">Sotej Bazaar</span>
-              <ChevronRight size={12} style={{ opacity: 0.3 }} />
-              <span className="admin-topbar-page">
-                {NAV_ITEMS.find(item => item.href === "/admin" ? pathname === "/admin" : pathname?.startsWith(item.href))?.label || "Admin"}
-              </span>
-            </div>
-            <div className="admin-topbar-actions">
-              <div className="admin-topbar-avatar">MZ</div>
-            </div>
-          </header>
+      <AppSidebar />
+      
+      <SidebarInset className="admin-main-inset">
+        {/* Top Bar */}
+        <header className="admin-topbar">
+          <SidebarTrigger className="admin-trigger-btn" />
+          <div className="admin-topbar-breadcrumb">
+            <span className="admin-topbar-brand">Sotej Bazaar</span>
+            <ChevronRight size={12} style={{ opacity: 0.3 }} />
+            <span className="admin-topbar-page">
+              {NAV_ITEMS.find(item => item.href === "/admin" ? pathname === "/admin" : pathname?.startsWith(item.href))?.label || "Admin"}
+            </span>
+          </div>
+          <div className="admin-topbar-actions">
+            <div className="admin-topbar-avatar">MZ</div>
+          </div>
+        </header>
 
-          {/* Page Content */}
-          <main className="admin-content">
-            {children}
-          </main>
-        </SidebarInset>
-      </div>
+        {/* Page Content */}
+        <main className="admin-content">
+          {children}
+        </main>
+      </SidebarInset>
 
       <style>{`
-        /* Admin Shell styling integration */
-        .admin-shell {
-          display: flex;
-          min-height: 100vh;
-          background: #09090b;
-          width: 100%;
-          color: #fafafa;
-          font-family: var(--font-body);
-        }
-
         .admin-main-inset {
           background: #09090b !important;
           border: none !important;
@@ -64,6 +52,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           display: flex;
           flex-direction: column;
           flex: 1;
+          min-height: 100vh;
         }
 
         /* Topbar styling */
@@ -80,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           z-index: 50;
         }
 
-        /* Sidebar Trigger custom style to fit topbar */
+        /* Sidebar Trigger custom style to fit topbar - bulletproof clickability */
         .admin-trigger-btn {
           width: 32px !important;
           height: 32px !important;
@@ -92,6 +81,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           align-items: center !important;
           justify-content: center !important;
           cursor: pointer !important;
+          position: relative !important;
+          z-index: 9999 !important;
+          pointer-events: auto !important;
           transition: all 0.15s !important;
         }
 
