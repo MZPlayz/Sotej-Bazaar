@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: "Experience the pure, natural taste of handpicked premium organic fruits, vegetables, dairy, eggs, and groceries. Locally sourced and fresh.",
 };
 
+import AppLayoutWrapper from "@/components/AppLayoutWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,13 +36,16 @@ export default function RootLayout({
       <body className="antialiased">
         <CartProvider>
           <WishlistProvider>
-            <div className="app-layout">
-              <Suspense fallback={<div className="site-header" />}>
-                <Header />
-              </Suspense>
-              <main className="main-content-flow">{children}</main>
-              <Footer />
-            </div>
+            <AppLayoutWrapper
+              header={
+                <Suspense fallback={<div className="site-header" />}>
+                  <Header />
+                </Suspense>
+              }
+              footer={<Footer />}
+            >
+              {children}
+            </AppLayoutWrapper>
           </WishlistProvider>
         </CartProvider>
       </body>
