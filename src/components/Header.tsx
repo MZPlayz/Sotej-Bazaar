@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import {
   ShoppingBag,
   Heart,
@@ -24,6 +24,10 @@ import { CATEGORIES } from "@/data/products";
 export const Header: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/admin")) return null;
+
   const {
     cart,
     updateQuantity,

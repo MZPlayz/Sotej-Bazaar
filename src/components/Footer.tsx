@@ -4,7 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { Leaf, ShieldCheck, Truck, RefreshCw, Star } from "lucide-react";
 
+import { usePathname } from "next/navigation";
+
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <footer className="site-footer">
       {/* Values Banner */}
